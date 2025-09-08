@@ -1,12 +1,66 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Cypress Login E2E
 
-Currently, two official plugins are available:
+> React + Vite tabanlı, giriş formu validasyonuna sahip ve Cypress ile uçtan uca (E2E) testleri bulunan örnek proje.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Özellikler
 
-## Expanding the ESLint configuration
+- Modern React (Hooks) ile yazılmış login formu
+- Form validasyonu: Email ve güçlü şifre kontrolü
+- Başarılı giriş sonrası yönlendirme ve başarı mesajı
+- Tüm akışlar için kapsamlı Cypress E2E testleri
+- Vite ile hızlı geliştirme ortamı
+- ESLint ile kod kalitesi kontrolü
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Kurulum
+
+```bash
+git clone https://github.com/ohhamamcioglu/cypress-login-e2e.git
+cd cypress-login-e2e
+npm install
+```
+
+## Geliştirme Sunucusu
+
+```bash
+npm run dev
+# Uygulama varsayılan olarak http://localhost:5173 adresinde çalışır
+```
+
+## E2E Testleri Çalıştırma
+
+### Cypress GUI ile
+```bash
+npm run cy:open
+# Cypress arayüzünden testleri başlatabilirsiniz
+```
+
+### Komut satırında
+```bash
+npm run cy:run
+```
+
+## Proje Yapısı
+
+- `src/components/Login.jsx` — Giriş formu ve validasyon
+- `src/components/Success.jsx` — Başarılı giriş sonrası ekran
+- `cypress/e2e/login.cy.js` — Tüm uçtan uca testler
+- `vite.config.js` — Vite yapılandırması
+- `eslint.config.js` — ESLint ayarları (Cypress desteğiyle)
+
+## Test Senaryoları
+
+- Başarılı girişte yönlendirme ve başarı mesajı
+- Hatalı email ve/veya şifre ile hata mesajları ve butonun devre dışı olması
+- Şartlar kutusu işaretlenmeden girişin engellenmesi
+
+## Kullanılan Teknolojiler
+
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [Cypress](https://www.cypress.io/)
+- [ESLint](https://eslint.org/)
+
+## Katkı ve Lisans
+
+Bu proje MIT lisansı ile açık kaynak olarak sunulmuştur. Katkılarınızı bekleriz!
