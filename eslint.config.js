@@ -15,7 +15,10 @@ export default defineConfig([
     ],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser,
+      globals: {
+        ...globals.browser,
+        ...globals.cypress,
+      },
       parserOptions: {
         ecmaVersion: 'latest',
         ecmaFeatures: { jsx: true },
@@ -25,5 +28,24 @@ export default defineConfig([
     rules: {
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
     },
+  },
+  {
+    files: ['cypress/**/*.js'],
+    plugins: {
+      cypress: (await import('eslint-plugin-cypress')).default || (await import('eslint-plugin-cypress')),
+    },
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        cy: false,
+        Cypress: false,
+        expect: false,
+        assert: false,
+        chai: false,
+        ...globals.browser,
+        ...globals.mocha,
+      },
+    },
+    rules: {},
   },
 ])
